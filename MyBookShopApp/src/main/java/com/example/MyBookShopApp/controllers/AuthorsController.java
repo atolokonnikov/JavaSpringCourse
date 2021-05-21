@@ -1,27 +1,32 @@
 package com.example.MyBookShopApp.controllers;
 
-import com.example.MyBookShopApp.data.AuthorsService;
+import com.example.MyBookShopApp.data.Author;
+import com.example.MyBookShopApp.data.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import java.util.List;
+import java.util.Map;
 
 @Controller
-@RequestMapping("authors")
 public class AuthorsController {
 
-    private final AuthorsService authorsService;
+    private final AuthorService authorService;
 
     @Autowired
-    public AuthorsController(AuthorsService authorsService) {
-        this.authorsService = authorsService;
+    public AuthorsController(AuthorService authorService) {
+        this.authorService = authorService;
     }
 
-    @GetMapping("index.html")
-    public String GetAuthorsPage(Model model) {
-        model.addAttribute("authorsLinks", authorsService.getAuthorsLinks());
-        model.addAttribute("authorData", authorsService.getAuthorsData());
-        return "/authors/index.html";
+    @ModelAttribute("authorsMap")
+    public Map<String, List<Author>> authorsMap(){
+        return authorService.getAuthorsMap();
+    }
+
+    @GetMapping("/authors")
+    public String authorsPage() {
+        return "/authors/index";
     }
 }

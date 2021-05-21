@@ -10,7 +10,8 @@ price VARCHAR(250) DEFAULT NULL
 
 DROP TABLE IF EXISTS authors;
 
-CREATE TABLE  authors(
-id INT PRIMARY KEY,
-author VARCHAR(250) NOT NULL
+create table authors (
+    id INT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50)
 );

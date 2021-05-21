@@ -1,4 +1,4 @@
-insert into authors (id, author) values (1, 'Drucie Goodbourn');
+/*insert into authors (id, author) values (1, 'Drucie Goodbourn');
 insert into authors (id, author) values (2, 'Marcia Aggiss');
 insert into authors (id, author) values (3, 'Giovanni Bigg');
 insert into authors (id, author) values (4, 'Duffie Eynon');
@@ -23,7 +23,7 @@ insert into authors (id, author) values (22, 'Lindsay Coutthart');
 insert into authors (id, author) values (23, 'Helyn Schneidar');
 insert into authors (id, author) values (24, 'Bette-ann Askem');
 insert into authors (id, author) values (25, 'Dom Robuchon');
-
+*/
 
 insert into books (author_id, title, priceOld, price) values (1, 'exploit real-time e-commerce', '$203.23', '$43.37');
 insert into books (author_id, title, priceOld, price) values (2, 'utilize real-time interfaces', '$260.31', '$35.96');
