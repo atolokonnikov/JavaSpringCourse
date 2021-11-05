@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.logging.Logger;
 
-@Configuration
 public class CommandLineRunnerImpl implements CommandLineRunner {
 
     TestEntityCrudRepository testEntityCrudRepository;
@@ -45,8 +44,8 @@ public class CommandLineRunnerImpl implements CommandLineRunner {
 
         deleteTestEntityById(4L);
 
-        Logger.getLogger(CommandLineRunnerImpl.class.getSimpleName()).info(bookRepository.findBooksByAuthor_FirstName("Tedie").toString());
-        Logger.getLogger(CommandLineRunnerImpl.class.getSimpleName()).info(bookRepository.customFindAllBooks().toString());
+        //Logger.getLogger(CommandLineRunnerImpl.class.getSimpleName()).info(bookRepository.findBooksByAuthor_FirstName("Tedie").toString());
+        //Logger.getLogger(CommandLineRunnerImpl.class.getSimpleName()).info(bookRepository.customFindAllBooks().toString());
     }
 
     private void deleteTestEntityById(Long id) {

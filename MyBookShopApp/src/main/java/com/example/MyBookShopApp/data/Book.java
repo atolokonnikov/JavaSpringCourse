@@ -1,22 +1,42 @@
 package com.example.MyBookShopApp.data;
 
+import org.hibernate.type.ByteType;
+import org.hibernate.type.DateType;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name="books")
+@Table(name = "book")
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "author_id", referencedColumnName = "id")
-    private Author author;
-
+    @Column(nullable = false)
+    private Date pub_date;
+    @Column(nullable = false)
+    private Integer is_bestseller;
+    @Column(nullable = false)
+    private String slug;
+    @Column(nullable = false)
     private String title;
-    private String priceOld;
-    private String price;
+    private String image;
+    private String description;
+    @Column(nullable = false)
+    private Integer price;
+    @Column(nullable = false)
+    private Integer discount = 0;
+
+    @OneToMany(mappedBy = "book")
+    private List<Book2author> authorList = new ArrayList<>();
+
+    public List<Book2author> getAuthorList() {
+        return authorList;
+    }
 
     public Integer getId() {
         return id;
@@ -26,12 +46,28 @@ public class Book {
         this.id = id;
     }
 
-    public Author getAuthor() {
-        return author;
+    public Date getPub_date() {
+        return pub_date;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setPub_date(Date pub_date) {
+        this.pub_date = pub_date;
+    }
+
+    public Integer getIs_bestseller() {
+        return is_bestseller;
+    }
+
+    public void setIs_bestseller(Integer is_bestseller) {
+        this.is_bestseller = is_bestseller;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 
     public String getTitle() {
@@ -42,30 +78,44 @@ public class Book {
         this.title = title;
     }
 
-    public String getPriceOld() {
-        return priceOld;
+    public String getImage() {
+        return image;
     }
 
-    public void setPriceOld(String priceOld) {
-        this.priceOld = priceOld;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getPrice() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
     }
 
     @Override
     public String toString() {
         return "Book{" +
                 "id=" + id +
-                ", author=" + author +
                 ", title='" + title + '\'' +
-                ", priceOld='" + priceOld + '\'' +
-                ", price='" + price + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
