@@ -3,15 +3,14 @@ package com.example.MyBookShopApp.data;
 import javax.persistence.*;
 
 @Entity
-@Table
-public class book_file {
+public class BookFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(nullable = false)
     private String hash;
     @Column(nullable = false)
-    private Integer type_id;
+    private Integer typeId;
     @Column(nullable = false)
     private String path;
 
@@ -31,12 +30,12 @@ public class book_file {
         this.hash = hash;
     }
 
-    public Integer getType_id() {
-        return type_id;
+    public Integer getTypeId() {
+        return typeId;
     }
 
-    public void setType_id(Integer type_id) {
-        this.type_id = type_id;
+    public void setTypeId(Integer type_id) {
+        this.typeId = typeId;
     }
 
     public String getPath() {
@@ -49,10 +48,10 @@ public class book_file {
 
     @Override
     public String toString() {
-        return "book_file{" +
+        return "BookFile{" +
                 "id=" + id +
                 ", hash='" + hash + '\'' +
-                ", type_id=" + type_id +
+                ", typeId=" + typeId +
                 ", path='" + path + '\'' +
                 '}';
     }

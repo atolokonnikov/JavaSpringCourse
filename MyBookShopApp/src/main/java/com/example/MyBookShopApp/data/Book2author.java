@@ -3,7 +3,6 @@ package com.example.MyBookShopApp.data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "book2author")
 public class Book2author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,7 +53,7 @@ public class Book2author {
 
     @Override
     public String toString() {
-        return "book2author{" +
+        return "Book2author{" +
                 "id=" + id +
                 ", book=" + book +
                 ", author=" + author +

@@ -3,7 +3,6 @@ package com.example.MyBookShopApp.data;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "test_entities")
 public class TestEntity {
 
     @Id

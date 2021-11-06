@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "book")
 public class Book {
 
     @Id
@@ -17,9 +16,9 @@ public class Book {
     private Integer id;
 
     @Column(nullable = false)
-    private Date pub_date;
+    private Date pubDate;
     @Column(nullable = false)
-    private Integer is_bestseller;
+    private Integer isBestseller;
     @Column(nullable = false)
     private String slug;
     @Column(nullable = false)
@@ -46,20 +45,20 @@ public class Book {
         this.id = id;
     }
 
-    public Date getPub_date() {
-        return pub_date;
+    public Date getPubDate() {
+        return pubDate;
     }
 
-    public void setPub_date(Date pub_date) {
-        this.pub_date = pub_date;
+    public void setPubDate(Date pubDate) {
+        this.pubDate = pubDate;
     }
 
-    public Integer getIs_bestseller() {
-        return is_bestseller;
+    public Integer getIsBestseller() {
+        return isBestseller;
     }
 
-    public void setIs_bestseller(Integer is_bestseller) {
-        this.is_bestseller = is_bestseller;
+    public void setIsBestseller(Integer isBestseller) {
+        this.isBestseller = isBestseller;
     }
 
     public String getSlug() {
