@@ -25,8 +25,14 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     @Query("from Book where isBestseller = 1")
     List<Book> getBestsellers();
 
+    @Query(value = "select * from Book where is_bestseller = 1 order by id", nativeQuery = true)
+    Page<Book> findBookPopular(Pageable pageable);
+
     @Query(value="select * from book where discount = (select max(discount) from book)", nativeQuery=true)
     List<Book> getBookWithMaxDiscount();
+
+    @Query(value = "select * from book where pub_date > current_date - interval '2 year'  order by id", nativeQuery = true)
+    Page<Book> findBookByPubDate(Pageable pageable);
 
     Page<Book> findBookByTitleContaining(String bookTitle, Pageable nextPage);
 }

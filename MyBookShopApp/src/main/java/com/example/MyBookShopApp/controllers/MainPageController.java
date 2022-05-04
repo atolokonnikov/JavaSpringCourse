@@ -27,6 +27,16 @@ public class MainPageController {
         return bookService.getPageOfRecommendedBooks(0, 6).getContent();
     }
 
+    @ModelAttribute("newsBooks")
+    public List<Book> newsBooks() {
+        return bookService.getPageOfNewsBooks(0, 6).getContent();
+    }
+
+    @ModelAttribute("popularBooks")
+    public List<Book> popularBooks() {
+        return bookService.getPageOfPopularBooks(0, 6).getContent();
+    }
+
     @ModelAttribute("searchWordDto")
     public SearchWordDto searchWordDto() {
         return new SearchWordDto();
@@ -49,9 +59,23 @@ public class MainPageController {
         return new BooksPageDto(bookService.getPageOfRecommendedBooks(offset, limit).getContent());
     }
 
+    @GetMapping("/books/recent")
+    @ResponseBody
+    public BooksPageDto getBooksNewsPage(@RequestParam("offset") Integer offset,
+                                         @RequestParam("limit") Integer limit) {
+        return new BooksPageDto(bookService.getPageOfNewsBooks(offset, limit).getContent());
+    }
+
+    @GetMapping("/books/popular")
+    @ResponseBody
+    public BooksPageDto getBooksPopularPage(@RequestParam("offset") Integer offset,
+                                            @RequestParam("limit") Integer limit) {
+        return new BooksPageDto(bookService.getPageOfPopularBooks(offset, limit).getContent());
+    }
+
     @GetMapping(value = {"/search", "/search/{searchWord}"})
     public String getSearchResults(@PathVariable(value = "searchWord", required = false) SearchWordDto searchWordDto,
-                                   Model model){
+                                   Model model) {
         model.addAttribute("searchWordDto", searchWordDto);
         model.addAttribute("searchResults",
                 bookService.getPageOfSearchResultBooks(searchWordDto.getExample(), 0, 5).getContent());
@@ -63,6 +87,6 @@ public class MainPageController {
     public BooksPageDto getNextSearchPage(@RequestParam("offset") Integer offset,
                                           @RequestParam("limit") Integer limit,
                                           @PathVariable(value = "searchWord", required = false) SearchWordDto searchWordDto) {
-        return new BooksPageDto(bookService.getPageOfSearchResultBooks(searchWordDto.getExample(),offset,limit).getContent());
+        return new BooksPageDto(bookService.getPageOfSearchResultBooks(searchWordDto.getExample(), offset, limit).getContent());
     }
 }
